@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-azureprojectt"
+		},
+		"AzureDataLake_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLake'"
+		},
+		"AzureSql_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSql'"
+		},
+		"AzureDataLake_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://storageazurepro.dfs.core.windows.net/"
+		},
+		"AzureSql_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azureprojectserverzaid.database.windows.net"
+		},
+		"AzureSql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "azureprojectserverzaid"
+		},
+		"AzureSql_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adminzaid"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-azureprojectt_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLake_accountKey": {
+						"value": "[parameters('AzureDataLake_accountKey')]"
+					},
+					"AzureSql_password": {
+						"value": "[parameters('AzureSql_password')]"
+					},
+					"AzureDataLake_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLake_properties_typeProperties_url')]"
+					},
+					"AzureSql_properties_typeProperties_server": {
+						"value": "[parameters('AzureSql_properties_typeProperties_server')]"
+					},
+					"AzureSql_properties_typeProperties_database": {
+						"value": "[parameters('AzureSql_properties_typeProperties_database')]"
+					},
+					"AzureSql_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSql_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

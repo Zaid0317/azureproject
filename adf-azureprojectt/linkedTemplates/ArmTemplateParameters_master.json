@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-azureprojectt"
+		},
+		"AzureDataLake_accountKey": {
+			"value": ""
+		},
+		"AzureSql_password": {
+			"value": ""
+		},
+		"AzureDataLake_properties_typeProperties_url": {
+			"value": "https://storageazurepro.dfs.core.windows.net/"
+		},
+		"AzureSql_properties_typeProperties_server": {
+			"value": "azureprojectserverzaid.database.windows.net"
+		},
+		"AzureSql_properties_typeProperties_database": {
+			"value": "azureprojectserverzaid"
+		},
+		"AzureSql_properties_typeProperties_userName": {
+			"value": "adminzaid"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
